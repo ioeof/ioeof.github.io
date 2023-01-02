@@ -1,1 +1,102 @@
-hello world
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>IOEOF</title>
+    <style type="text/css">html{background:#dcdcdc;}body{padding:10px 30px;}</style>
+</head>
+<body>
+    <h2>IOEOF is a simple javascript Timeline.</h2>
+
+    <div class="Preview">
+
+<style type="text/css">
+.IoeofTabs{display:flex;flex-wrap:nowrap;white-space:nowrap;position:relative;overflow:hidden;overflow-x:auto;user-select:none;padding-bottom:10px;}
+.IoeofTabs::-webkit-scrollbar{width:6px;height:6px;}
+.IoeofTabs::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px;}
+.IoeofTabs::-webkit-scrollbar-track{background:transparent;}
+.IoeofTabs>.IoeofEdge>div{width:0;height:1px;}
+.IoeofTabs>.IoeofTab{position:relative;}
+.IoeofTabs>.IoeofTab>.IoeofTabText{font-size:20px;line-height:36px;padding:0 16px;cursor:pointer;background:#ccc;border-radius:18px;}
+.IoeofTabs>.IoeofTab:focus>.IoeofTabText{background:#eee;}
+.IoeofTabs>.IoeofTab:hover>.IoeofTabText{background:#eee;}
+.IoeofTabs>.IoeofTab.active>.IoeofTabText{background:#fff;}
+</style>
+
+<div id="IoeofTest" class="IoeofTabs">
+    <div class="IoeofEdge"><div></div></div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2008</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2009</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2010</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2011</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2012</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2013</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2014</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2015</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2016</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2017</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2018</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2019</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2020</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2021</div>
+    </div>
+        <div class="IoeofTab">
+        <div class="IoeofTabText">2022</div>
+    </div>
+        <div class="IoeofEdge"><div></div></div>
+</div>
+
+<script type="text/javascript">
+var Ioeof=(function(){var that=this;
+    this.margin=0;
+    this.selector='.IoeofTabs';
+    this.callback=null;
+    this.config=function(selector,margin){if(selector)this.selector=selector;if(margin){this.margin=margin;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');for(var i=l.length-1;i>=0;i--)l[i].style.margin='0 '+String(this.margin)+'px';}return this;};
+    this.center=function(width){var e=(width)?Math.round((document.querySelector(this.selector).getBoundingClientRect().width-width-this.margin*2)/2):0;var l=document.querySelectorAll(String(this.selector)+'>.IoeofEdge>div');for(var i=l.length-1;i>=0;i--)l[i].style.width=String(e)+'px';return this;};
+    this.handler=function(){var l=document.querySelectorAll(String(that.selector)+'>.IoeofTab.active');for(var i=l.length-1;i>=0;i--)l[i].classList.remove('active');var dom=this;dom.classList.add('active');if(that.callback)try{that.callback(dom,dom.dataset['index']);}catch(e){}};
+    this.onclick=function(callback){this.callback=callback;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');for(var i=l.length-1;i>=0;i--){l[i].dataset['index']=i;l[i].onclick=this.handler;}return this;};
+    this.focus=function(index){index=parseInt(index);if(isNaN(index))return null;if(index<0)return null;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');if(index>=l.length)return null;var ioeof=document.querySelector(this.selector);var dom=l[index];var w=ioeof.getBoundingClientRect().width;var v=dom.getBoundingClientRect().width;var l=ioeof.scrollLeft;var e=dom.offsetLeft;if(!((e>=l)&&(e+v<=l+w)))ioeof.scrollLeft=Math.round(e-(w-v)/2);return dom;};
+    this.click=function(index){var dom=this.focus(index);if(!dom)return null;this.handler.apply(dom);return dom;};
+    this.count=function(){return document.querySelectorAll(String(this.selector)+'>.IoeofTab').length;};
+});
+var ioeof=new Ioeof().config('#IoeofTest',6).onclick(function(item,index){console.log(item,index);});
+ioeof.click(ioeof.count()-1);
+</script>
+
+    </div>
+
+</body>
+</html>
