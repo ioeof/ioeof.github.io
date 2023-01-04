@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,81 +10,65 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>IOEOF</title>
-    <style type="text/css">html{background:#dcdcdc;}body{padding:10px 30px;}</style>
+    <style type="text/css">html{background:#dcdcdc;}body{padding:10px 30px;}pre{margin-bottom:30px;padding:15px 20px;white-space:pre-wrap;word-break:break-word;background:#eee;color:#000;font:12px/20px consolas;}</style>
 </head>
 <body>
-    <h2>IOEOF is a simple javascript Timeline.</h2>
+    <h2>IOEOF is a simple HTML + Javascript Timeline.</h2>
 
-    <div class="Preview">
+    <h3>Preview:</h3>
 
+<div id="CodeStyle">
 <style type="text/css">
-.IoeofTabs{display:flex;flex-wrap:nowrap;white-space:nowrap;position:relative;overflow:hidden;overflow-x:auto;user-select:none;padding-bottom:10px;}
-.IoeofTabs::-webkit-scrollbar{width:6px;height:6px;}
-.IoeofTabs::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px;}
-.IoeofTabs::-webkit-scrollbar-track{background:transparent;}
-.IoeofTabs>.IoeofEdge>div{width:0;height:1px;}
-.IoeofTabs>.IoeofTab{position:relative;}
-.IoeofTabs>.IoeofTab>.IoeofTabText{font-size:20px;line-height:36px;padding:0 16px;cursor:pointer;background:#ccc;border-radius:18px;}
-.IoeofTabs>.IoeofTab:focus>.IoeofTabText{background:#eee;}
-.IoeofTabs>.IoeofTab:hover>.IoeofTabText{background:#eee;}
-.IoeofTabs>.IoeofTab.active>.IoeofTabText{background:#fff;}
+.Ioeof{display:flex;flex-wrap:nowrap;white-space:nowrap;position:relative;overflow:hidden;overflow-x:auto;user-select:none;padding-bottom:10px;}
+.Ioeof::-webkit-scrollbar{width:6px;height:6px;}
+.Ioeof::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px;}
+.Ioeof::-webkit-scrollbar-track{background:transparent;}
+.Ioeof>.IoeofEdge>div{width:0;height:1px;}
+.Ioeof>.IoeofTab{position:relative;}
+.Ioeof>.IoeofTab>.IoeofTabText{font-size:20px;line-height:36px;padding:0 16px;cursor:pointer;background:#ccc;border-radius:18px;}
+.Ioeof>.IoeofTab:focus>.IoeofTabText{background:#eee;}
+.Ioeof>.IoeofTab:hover>.IoeofTabText{background:#eee;}
+.Ioeof>.IoeofTab.active>.IoeofTabText{background:#fff;}
 </style>
+</div>
 
-<div id="IoeofTest" class="IoeofTabs">
+<div id="CodeHtml">
+<div id="IoeofTest" class="Ioeof">
     <div class="IoeofEdge"><div></div></div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2008</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2009</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2010</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2011</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2012</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2013</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2014</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2015</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2016</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2017</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2018</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2019</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2020</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2021</div>
-    </div>
-        <div class="IoeofTab">
-        <div class="IoeofTabText">2022</div>
-    </div>
-        <div class="IoeofEdge"><div></div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2002</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2003</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2004</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2005</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2006</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2007</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2008</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2009</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2010</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2011</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2012</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2013</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2014</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2015</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2016</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2017</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2018</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2019</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2020</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2021</div></div>
+    <div class="IoeofTab"><div class="IoeofTabText">2022</div></div>
+    <div class="IoeofEdge"><div></div></div>
+</div>
+<div id="ClickTest" style="text-align:center;font:26px/36px tahoma;padding:20px;"></div>
 </div>
 
 <script type="text/javascript">
-var Ioeof=(function(){var that=this;
-    this.margin=0;
-    this.selector='.IoeofTabs';
-    this.callback=null;
+window.codeStyle=document.querySelector('#CodeStyle').innerHTML.trim();
+window.codeHtml=document.querySelector('#CodeHtml').innerHTML.trim();
+</script>
+
+<div id="CodeScript">
+<script type="text/javascript">
+var Ioeof=(function(){var that=this;this.margin=0;this.selector='.Ioeof';this.callback=null;
     this.config=function(selector,margin){if(selector)this.selector=selector;if(margin){this.margin=margin;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');for(var i=l.length-1;i>=0;i--)l[i].style.margin='0 '+String(this.margin)+'px';}return this;};
     this.center=function(width){var e=(width)?Math.round((document.querySelector(this.selector).getBoundingClientRect().width-width-this.margin*2)/2):0;var l=document.querySelectorAll(String(this.selector)+'>.IoeofEdge>div');for(var i=l.length-1;i>=0;i--)l[i].style.width=String(e)+'px';return this;};
     this.handler=function(){var l=document.querySelectorAll(String(that.selector)+'>.IoeofTab.active');for(var i=l.length-1;i>=0;i--)l[i].classList.remove('active');var dom=this;dom.classList.add('active');if(that.callback)try{that.callback(dom,dom.dataset['index']);}catch(e){}};
@@ -91,12 +76,32 @@ var Ioeof=(function(){var that=this;
     this.focus=function(index){index=parseInt(index);if(isNaN(index))return null;if(index<0)return null;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');if(index>=l.length)return null;var ioeof=document.querySelector(this.selector);var dom=l[index];var w=ioeof.getBoundingClientRect().width;var v=dom.getBoundingClientRect().width;var l=ioeof.scrollLeft;var e=dom.offsetLeft;if(!((e>=l)&&(e+v<=l+w)))ioeof.scrollLeft=Math.round(e-(w-v)/2);return dom;};
     this.click=function(index){var dom=this.focus(index);if(!dom)return null;this.handler.apply(dom);return dom;};
     this.count=function(){return document.querySelectorAll(String(this.selector)+'>.IoeofTab').length;};
+    this.drag=function(){if(navigator.userAgent.toLowerCase().indexOf('mobile')>0)return this;var ioeof=document.querySelector(this.selector);ioeof.onmousedown=function(e){ioeof.classList.add('draging');ioeof.dataset['dragstart']=e.clientX;ioeof.dataset['dragscroll']=ioeof.scrollLeft;};ioeof.onmousemove=function(e){if(ioeof.classList.contains('draging'))ioeof.scrollLeft=ioeof.dataset['dragscroll']-(e.clientX-ioeof.dataset['dragstart']);};ioeof.onmouseup=function(e){ioeof.classList.remove('draging');};return this;};
 });
-var ioeof=new Ioeof().config('#IoeofTest',6).onclick(function(item,index){console.log(item,index);});
-ioeof.click(ioeof.count()-1);
 </script>
+<script type="text/javascript">
+var ioeof=new Ioeof().config('#IoeofTest',6).drag().onclick(function(item,index){
+    document.querySelector('#ClickTest').innerHTML='#'+String(index)+' tab is activated : <b>'+item.textContent+'</b>';
+});
+ioeof.click(0);
+</script>
+</div>
 
-    </div>
+    <h3>CSS:</h3>
+    <pre class="Code Style"></pre>
+
+    <h3>HTML:</h3>
+    <pre class="Code Html"></pre>
+
+    <h3>JS:</h3>
+    <pre class="Code Javascript"></pre>
+    
+    <script type="text/javascript">
+window.codeScript=document.querySelector('#CodeScript').innerHTML.trim();
+document.querySelector('.Code.Style').textContent=window.codeStyle;
+document.querySelector('.Code.Html').textContent=window.codeHtml;
+document.querySelector('.Code.Javascript').textContent=window.codeScript;
+    </script>
 
 </body>
 </html>
