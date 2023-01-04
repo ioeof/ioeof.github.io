@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +8,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>IOEOF</title>
+    <title>Ioeof</title>
     <style type="text/css">html{background:#dcdcdc;}body{padding:10px 30px;}pre{margin-bottom:30px;padding:15px 20px;white-space:pre-wrap;word-break:break-word;background:#eee;color:#000;font:12px/20px consolas;}</style>
 </head>
 <body>
-    <h2>IOEOF is a simple HTML + Javascript Timeline.</h2>
-
-    <h3>Preview:</h3>
-
+<h2>Ioeof is a simple HTML + Javascript Timeline.</h2>
+<h3>Introduce:</h3>
+<pre>It's easy to make a Timeline, it can also be used as a TabPage component, whatever you want.</pre>
+<h3>Preview:</h3>
 <div id="CodeStyle">
 <style type="text/css">
 .Ioeof{display:flex;flex-wrap:nowrap;white-space:nowrap;position:relative;overflow:hidden;overflow-x:auto;user-select:none;padding-bottom:10px;}
@@ -31,7 +30,6 @@
 .Ioeof>.IoeofTab.active>.IoeofTabText{background:#fff;}
 </style>
 </div>
-
 <div id="CodeHtml">
 <div id="IoeofTest" class="Ioeof">
     <div class="IoeofEdge"><div></div></div>
@@ -60,48 +58,38 @@
 </div>
 <div id="ClickTest" style="text-align:center;font:26px/36px tahoma;padding:20px;"></div>
 </div>
-
-<script type="text/javascript">
-window.codeStyle=document.querySelector('#CodeStyle').innerHTML.trim();
-window.codeHtml=document.querySelector('#CodeHtml').innerHTML.trim();
-</script>
-
+<script type="text/javascript">window.codeStyle=document.querySelector('#CodeStyle').innerHTML.trim();window.codeHtml=document.querySelector('#CodeHtml').innerHTML.trim();</script>
 <div id="CodeScript">
 <script type="text/javascript">
 var Ioeof=(function(){var that=this;this.margin=0;this.selector='.Ioeof';this.callback=null;
     this.config=function(selector,margin){if(selector)this.selector=selector;if(margin){this.margin=margin;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');for(var i=l.length-1;i>=0;i--)l[i].style.margin='0 '+String(this.margin)+'px';}return this;};
     this.center=function(width){var e=(width)?Math.round((document.querySelector(this.selector).getBoundingClientRect().width-width-this.margin*2)/2):0;var l=document.querySelectorAll(String(this.selector)+'>.IoeofEdge>div');for(var i=l.length-1;i>=0;i--)l[i].style.width=String(e)+'px';return this;};
-    this.handler=function(){var l=document.querySelectorAll(String(that.selector)+'>.IoeofTab.active');for(var i=l.length-1;i>=0;i--)l[i].classList.remove('active');var dom=this;dom.classList.add('active');if(that.callback)try{that.callback(dom,dom.dataset['index']);}catch(e){}};
+    this.handler=function(){var l=document.querySelectorAll(String(that.selector)+'>.IoeofTab.active');for(var i=l.length-1;i>=0;i--)l[i].classList.remove('active');var dom=this;dom.classList.add('active');if(that.callback)try{that.callback(dom,dom.dataset['index'],that);}catch(e){}};
     this.onclick=function(callback){this.callback=callback;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');for(var i=l.length-1;i>=0;i--){l[i].dataset['index']=i;l[i].onclick=this.handler;}return this;};
-    this.focus=function(index){index=parseInt(index);if(isNaN(index))return null;if(index<0)return null;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');if(index>=l.length)return null;var ioeof=document.querySelector(this.selector);var dom=l[index];var w=ioeof.getBoundingClientRect().width;var v=dom.getBoundingClientRect().width;var l=ioeof.scrollLeft;var e=dom.offsetLeft;if(!((e>=l)&&(e+v<=l+w)))ioeof.scrollLeft=Math.round(e-(w-v)/2);return dom;};
+    this.mobile=function(){return navigator.userAgent.toLowerCase().indexOf('mobile')>0;};
+    this.focus=function(index){index=parseInt(index);if(isNaN(index))return null;if(index<0)return null;var l=document.querySelectorAll(String(this.selector)+'>.IoeofTab');if(index>=l.length)return null;var ioeof=document.querySelector(this.selector);var dom=l[index];var w=ioeof.getBoundingClientRect().width;var v=dom.getBoundingClientRect().width;var l=ioeof.scrollLeft;var e=dom.offsetLeft;if(!((e>=l)&&(e+v<=l+w)))ioeof.scrollLeft=Math.round(e+v/2-w/2);return dom;};
     this.click=function(index){var dom=this.focus(index);if(!dom)return null;this.handler.apply(dom);return dom;};
     this.count=function(){return document.querySelectorAll(String(this.selector)+'>.IoeofTab').length;};
-    this.drag=function(){if(navigator.userAgent.toLowerCase().indexOf('mobile')>0)return this;var ioeof=document.querySelector(this.selector);ioeof.onmousedown=function(e){ioeof.classList.add('draging');ioeof.dataset['dragstart']=e.clientX;ioeof.dataset['dragscroll']=ioeof.scrollLeft;};ioeof.onmousemove=function(e){if(ioeof.classList.contains('draging'))ioeof.scrollLeft=ioeof.dataset['dragscroll']-(e.clientX-ioeof.dataset['dragstart']);};ioeof.onmouseup=function(e){ioeof.classList.remove('draging');};return this;};
+    this.draggable=function(){if(this.mobile())return this;var ioeof=document.querySelector(this.selector);ioeof.onmousedown=function(e){ioeof.classList.add('dragging');ioeof.dataset['dragstart']=e.pageX-ioeof.offsetLeft;ioeof.dataset['dragscroll']=ioeof.scrollLeft;};ioeof.onmousemove=function(e){if(!ioeof.classList.contains('dragging'))return;e.preventDefault();ioeof.scrollLeft=ioeof.dataset['dragscroll']-(e.pageX-ioeof.offsetLeft-ioeof.dataset['dragstart'])*1;};ioeof.onmouseup=function(e){ioeof.classList.remove('dragging');};ioeof.onmouseleave=function(e){ioeof.classList.remove('dragging');};return this;};
 });
 </script>
 <script type="text/javascript">
-var ioeof=new Ioeof().config('#IoeofTest',6).drag().onclick(function(item,index){
-    document.querySelector('#ClickTest').innerHTML='#'+String(index)+' tab is activated : <b>'+item.textContent+'</b>';
-});
-ioeof.click(0);
+var ioeof=new Ioeof().config('#IoeofTest'/*Selector*/,6/*Tab Margin Width*/)
+    .draggable()/*if you need Horizontal Drag Scrolling*/
+    .onclick(function(tab,index,self){
+        /*tab click event*/
+        document.querySelector('#ClickTest').innerHTML='#'+String(index)+' tab is activated : <b>'+tab.textContent+'</b>';
+    });
+if(ioeof.count())ioeof.click(0);/*manual click tab*/
 </script>
 </div>
-
-    <h3>CSS:</h3>
-    <pre class="Code Style"></pre>
-
-    <h3>HTML:</h3>
-    <pre class="Code Html"></pre>
-
-    <h3>JS:</h3>
-    <pre class="Code Javascript"></pre>
-    
-    <script type="text/javascript">
-window.codeScript=document.querySelector('#CodeScript').innerHTML.trim();
-document.querySelector('.Code.Style').textContent=window.codeStyle;
-document.querySelector('.Code.Html').textContent=window.codeHtml;
-document.querySelector('.Code.Javascript').textContent=window.codeScript;
-    </script>
-
+<h3>CSS:</h3>
+<pre class="Code Style"></pre>
+<h3>HTML:</h3>
+<pre class="Code Html"></pre>
+<h3>JS:</h3>
+<pre class="Code Javascript"></pre>    
+<div class="Copyright" style="font:12px/20px tahoma;color:#666;text-align:center;cursor:default;"></div>
+<script type="text/javascript">window.codeScript=document.querySelector('#CodeScript').innerHTML.trim();document.querySelector('.Code.Style').textContent=window.codeStyle;document.querySelector('.Code.Html').textContent=window.codeHtml;document.querySelector('.Code.Javascript').textContent=window.codeScript;if(ioeof.mobile())document.querySelector('body').style.padding='10px 15px';document.querySelector('.Copyright').innerHTML='Copyright &copy; '+location.host;</script>
 </body>
 </html>
